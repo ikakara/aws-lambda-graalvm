@@ -51,7 +51,7 @@ dependencies {
 
 test {
     debugOptions {
-        //enabled = true
+        enabled = false
         port = 4455
         server = true
         suspend = true

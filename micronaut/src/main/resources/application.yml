@@ -6,3 +6,7 @@ micronaut:
 ---
 #graphql:
 #  graphiql.enabled: true
+
+---
+spoonacular:
+  apiKey: dummyKey
