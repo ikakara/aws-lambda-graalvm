@@ -77,13 +77,24 @@ I haven't done it yet, so for now, you'll have to build in the project folders.
 * Wait for it to load ...
 * cd to aws-lamda-graalvm/micronaut folder
 * for brand new installation
-  * ./gradlew assemble (docker env)
-  * ./docker-build.sh  (docker env)
-  * mkdir build
-* ./gradlew test (local env)  -- after code changes, I like to test/debug locally
+
+```
+./gradlew assemble (docker env)
+./docker-build.sh  (docker env)
+mkdir build
+
+```
+
+After code changes, I like to test/debug locally (local env) 
+
+```
+./gradlew test  
+
+```
 
 **Build and create a folder.zip and upload to Amazon (docker env)**
 
+```
 $./docker-build.sh
 $docker run --rm --entrypoint cat micronaut  /home/application/function.zip > build/function.zip
 $aws lambda create-function \
@@ -93,15 +104,25 @@ $aws lambda create-function \
   --runtime provided \
   --role [enter your aws-lambda-role]
 
+```
+
 For updates:
+
+```
 $aws lambda update-function-code \
   --function-name micronaut \
   --zip-file fileb://build/function.zip
 
+```
+
 There's also a deploy.sh script that does the above
 
 Use the following to invoke the lammbda function
+
+```
 aws lambda invoke --function-name micronaut --payload ''
+
+```
 
 Use the following payloads:
 
