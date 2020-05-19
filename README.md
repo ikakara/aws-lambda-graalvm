@@ -28,6 +28,7 @@ Comparing various aws lambda languages (micronaut, nodejs, python) for memory us
 **Other Installation:**
 
 * Micronaut v1.3.5                - <https://micronaut.io/download.html>
+  * OpenJDK 8                     - <https://developers.redhat.com/products/openjdk/download>
 * nodejs v12.16.3                 - <https://nodejs.org/en/download/>
 * python v3.8                     - this is installed w/ conda, or Visual Studio
   * Anaconda Install              - <https://docs.anaconda.com/anaconda/install/>
