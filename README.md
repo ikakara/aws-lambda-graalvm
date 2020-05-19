@@ -13,7 +13,7 @@ Comparing various aws lambda languages (micronaut, nodejs, python) for memory us
 **Technologies Used:**
 
 * AWS Lambda                      - serverless functions <https://docs.aws.amazon.com/lambda/index.html>
-* GraalVm v30.0.0                 - compile to native code <https://www.graalvm.org/docs/release-notes/20_0/>
+* GraalVm v20.0.0                 - compile to native code <https://www.graalvm.org/docs/release-notes/20_0/>
 * Docker (installation required)  - needed to run graalvm in amazonlinux environment
   * Toolbox                       - <https://github.com/docker/toolbox/releases>
   * Desktop                       - <https://docs.docker.com/release-notes/>
@@ -33,6 +33,7 @@ Comparing various aws lambda languages (micronaut, nodejs, python) for memory us
   * Anaconda Install              - <https://docs.anaconda.com/anaconda/install/>
 
 **Installation Instructions**
+
 The only installation that wasn't straight forward, was Docker.  So good luck ... kidding.  I'll help as much as I can.
 I'm using Windows Home, so I chose Docker Toolbox (versus Docker Desktop).
 
@@ -43,7 +44,7 @@ I'm using Windows Home, so I chose Docker Toolbox (versus Docker Desktop).
 * After installation, check to be sure Docker is working
   * Run Oracle VM VirtualBox (Console App)
   * Run Docker Quickstart Terminal -- wait for VirtualBox to finish (takes a minute or two)
-  * In the docker terminal: $docker run hello-world - 
+  * In the docker terminal: $docker run hello-world -
     * if problems, reset the default machine in the Console App OR run the following commands in the terminal
       * $ docker-machine rm default
       * $ docker-machine create --driver virtualbox default
@@ -53,9 +54,9 @@ I'm using Windows Home, so I chose Docker Toolbox (versus Docker Desktop).
   * Close (if running) your VM - I use the default
     * on windows, right click on VM (default) and select "Close" (power off)
   * Click settings
-    * System tab - 
+    * System tab -
       * increase memory to at least 4Gb - if you are unable to change settings, it's because your VM is still running
-      * increase cpu to at least 4 (half or system total)
+      * increase cpu to at least 4 (or half system total)
     * Display tab - increase your video memory (I'm using 32mb - anything more than 8mb)
     * Storage tab - I've spent many hours trying to increase disk.vmdk - the boot2docker doesn't like it (won't let you connect)
     * Shared folders - mount any drives that you need.  Docker needs access to the paths for java, micronaut, etc
@@ -63,11 +64,13 @@ I'm using Windows Home, so I chose Docker Toolbox (versus Docker Desktop).
 I found this thread to be very helpful: <https://github.com/docker/for-win/issues/204>
 
 **Handy Docker commands**
+
 $ docker-machine ip  --- you'll need this if you want to run the app in docker, and test in the browser http://machineip:8088/
 
 **Micronaut Build**
-I'm planning on update the build.gradle files so that you can manage all the builds from the root.  I haven't done it yet, so for
-now, you'll have to build in the project folders.
+
+I'm planning on update the build.gradle files so that you can manage all the builds from the root.  
+I haven't done it yet, so for now, you'll have to build in the project folders.
 
 * Run the Oracle VM - start the VM (default) - I start it headless
 * Run the Docker Quickstart Terminal
@@ -80,6 +83,7 @@ now, you'll have to build in the project folders.
 * ./gradlew test (local env)  -- after code changes, I like to test/debug locally
 
 **Build and create a folder.zip and upload to Amazon (docker env)**
+
 $./docker-build.sh
 $docker run --rm --entrypoint cat micronaut  /home/application/function.zip > build/function.zip
 $aws lambda create-function \
@@ -90,7 +94,7 @@ $aws lambda create-function \
   --role [enter your aws-lambda-role]
 
 For updates:
-#aws lambda update-function-code \
+$aws lambda update-function-code \
   --function-name micronaut \
   --zip-file fileb://build/function.zip
 
@@ -100,23 +104,30 @@ Use the following to invoke the lammbda function
 aws lambda invoke --function-name micronaut --payload ''
 
 Use the following payloads:
+
+```
 {
   "resource": "/echo/blah",
   "path": "/echo/blah",
   "httpMethod": "GET"
 }
+```
 
+```
 {
   "resource": "/find-primes-below/999",
   "path": "/find-primes-below/999",
   "httpMethod": "GET"
 }
+```
 
+```
 {
   "resource": "/food-trivia-random/{enter your apiKey}",
   "path": "/food-trivia-random/{enter your apiKey}",
   "httpMethod": "GET"
 }
+```
 
 I'll update the doc once I wire this to AWS API-Gateway (REST API) and/or AWS AppSync (GraphQL)
 
