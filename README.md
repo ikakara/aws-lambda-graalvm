@@ -1,6 +1,6 @@
 # aws-lambda-graalvm
 
-Tests to comparing various aws lambda languages (micronaut, nodejs, python) for memory use and performance
+Tests to compare aws-lambda supported languages (micronaut, nodejs, python) for memory use and performance
 
 **Use cases to be tested**
 
