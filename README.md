@@ -13,7 +13,7 @@ Tests to compare aws-lambda supported languages (micronaut, nodejs, python) for 
 **Technologies Used:**
 
 * AWS Lambda                      - serverless functions <https://docs.aws.amazon.com/lambda/index.html>
-* GraalVm v20.0.0                 - compile to native code <https://www.graalvm.org/docs/release-notes/20_0/>
+* GraalVm v20.1.0                 - compile to native code <https://www.graalvm.org/docs/release-notes/20_0/>
 * Docker (installation required)  - needed to run graalvm in amazonlinux environment
   * Toolbox                       - <https://github.com/docker/toolbox/releases>
   * Desktop                       - <https://docs.docker.com/release-notes/>
@@ -27,7 +27,7 @@ Tests to compare aws-lambda supported languages (micronaut, nodejs, python) for 
 
 **Other Installation:**
 
-* Micronaut v1.3.5                - <https://micronaut.io/download.html>
+* Micronaut v1.3.6                - <https://micronaut.io/download.html>
   * OpenJDK 8                     - <https://developers.redhat.com/products/openjdk/download>
 * nodejs v12.16.3                 - <https://nodejs.org/en/download/>
 * python v3.8                     - this is installed w/ conda, or Visual Studio
