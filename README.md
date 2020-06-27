@@ -27,8 +27,8 @@ Tests to compare aws-lambda supported languages (micronaut, nodejs, python) for 
 
 **Other Installation:**
 
-* Micronaut v1.3.6                - <https://micronaut.io/download.html>
-  * OpenJDK 8                     - <https://developers.redhat.com/products/openjdk/download>
+* Micronaut v2.0.0                - <https://micronaut.io/download.html>
+  * OpenJDK 14                    - <https://developers.redhat.com/products/openjdk/download>
 * nodejs v12.16.3                 - <https://nodejs.org/en/download/>
 * python v3.8                     - this is installed w/ conda, or Visual Studio
   * Anaconda Install              - <https://docs.anaconda.com/anaconda/install/>

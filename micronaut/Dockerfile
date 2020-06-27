@@ -1,4 +1,4 @@
-FROM gradle:6.3.0-jdk8 as builder
+FROM gradle:6.5.0-jdk14 as builder
 COPY --chown=gradle:gradle . /home/application
 WORKDIR /home/application
 RUN gradle build --no-daemon
@@ -13,7 +13,7 @@ RUN yum install -y gcc gcc-c++ libc6-dev  zlib1g-dev curl bash zlib zlib-devel z
     && rm -rf /var/cache/yum
 
 ENV GRAAL_VERSION 20.1.0
-ENV JDK_VERSION java8
+ENV JDK_VERSION java14
 ENV GRAAL_FILENAME graalvm-ce-${JDK_VERSION}-linux-amd64-${GRAAL_VERSION}.tar.gz
 
 RUN curl -4 -L https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAAL_VERSION}/${GRAAL_FILENAME} -o /tmp/${GRAAL_FILENAME}
